@@ -271,10 +271,12 @@ $utilities: map-merge(
       ),
     ),
     "min-viewport-height": (
+      responsive: true,
       property: min-height,
       class: min-vh,
       values: (
         100: 100vh,
+        atf: calc(100vh - 6rem),
       ),
     ),
     // scss-docs-end utils-sizing

@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 6rem;
+
+  .logo {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+      width: 180px;
+      height: 51px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 220px;
+      height: 63px;
+    }
+
+    &-m {
+      display: block;
+      width: 60px;
+      height: 60px;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
+  }
+}

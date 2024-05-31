@@ -1,12 +1,18 @@
-import Footer from "./layout/footer/footer";
-import Header from "./layout/header/header";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Page from "./components/Page";
 
 const App = () => {
-    return <>
-        <Header />
-        <h1 className="text-danger">Exploria</h1>
-        <Footer />
-    </>;
+  return (
+    <>
+      <Header />
+      <Page>
+        <Home />
+      </Page>
+      <Footer />
+    </>
+  );
 };
 
 export default App;

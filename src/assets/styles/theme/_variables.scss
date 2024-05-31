@@ -297,11 +297,18 @@ $cyans: (
 ) !default;
 // fusv-enable
 
-//TODO: Add brand colours and assign them to theme-colors map
+// scss-docs-start brand-color-variables
+$sea: rgb(10, 122, 166);
+$sand: rgb(217, 102, 61);
+$grass: rgb(127, 166, 45);
+$sky: rgb(11, 173, 191);
+$sun: rgb(217, 188, 43);
+// scss-docs-end brand-color-variables
 
 // scss-docs-start theme-color-variables
-$primary: $blue;
-$secondary: $gray-600;
+$primary: $sea;
+$secondary: $sand;
+$tertiary: $grass;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
@@ -382,7 +389,7 @@ $enable-cssgrid: false !default;
 $enable-button-pointers: true !default;
 $enable-rfs: true !default;
 $enable-validation-icons: true !default;
-$enable-negative-margins: false !default;
+$enable-negative-margins: true;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities: true !default;
 
@@ -473,7 +480,7 @@ $position-values: (
 
 $body-text-align: null !default;
 $body-color: $gray-900 !default;
-$body-bg: $white !default;
+$body-bg: #edfdff;
 
 $body-secondary-color: rgba($body-color, 0.75) !default;
 $body-secondary-bg: $gray-200 !default;
