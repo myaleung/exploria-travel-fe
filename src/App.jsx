@@ -3,6 +3,7 @@ import Header from "./components/Header";
 // import Home from "./pages/Home";
 import Page from "./components/Page";
 import Result from "./pages/Result";
+import SavedLocations from "./pages/SavedLocations";
 
 const App = () => {
   return (
@@ -10,7 +11,8 @@ const App = () => {
       <Header />
       <Page>
         {/* <Home /> */}
-        <Result />
+        {/* <Result /> */}
+        <SavedLocations />
       </Page>
       <Footer />
     </>

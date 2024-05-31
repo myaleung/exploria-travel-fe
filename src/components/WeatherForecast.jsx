@@ -10,13 +10,13 @@ const WeatherForecast = () => {
   const today = date.toLocaleDateString("en-UK", options);
 
   return (
-    <div>
+    <>
       <h2>Location</h2>
       <div className="d-flex justify-content-center py-3 position-relative">
         <svg className="icon h-30 w-30 me-2">
           <use xlinkHref="/assets/symbols.svg#favourite"></use>
         </svg>
-        <p>
+        <p className="mb-0">
           <a href="#">Add to My Favourites</a>
         </p>
       </div>
@@ -98,7 +98,7 @@ const WeatherForecast = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default WeatherForecast;
