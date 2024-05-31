@@ -3,16 +3,16 @@ const LoginForm = () => {
     <div>
       <h1>Sign In</h1>
       <form>
-        <div data-mdb-input-init class="form-outline mb-4">
-          <input type="email" id="loginName" class="form-control" />
-          <label class="form-label" for="loginName">
+        <div data-mdb-input-init className="form-outline mb-4">
+          <input type="email" id="loginName" className="form-control" />
+          <label className="form-label" for="loginName">
             Email or username
           </label>
         </div>
 
-        <div data-mdb-input-init class="form-outline mb-4">
-          <input type="password" id="loginPassword" class="form-control" />
-          <label class="form-label" for="loginPassword">
+        <div data-mdb-input-init className="form-outline mb-4">
+          <input type="password" id="loginPassword" className="form-control" />
+          <label className="form-label" for="loginPassword">
             Password
           </label>
         </div>
@@ -20,11 +20,11 @@ const LoginForm = () => {
           type="submit"
           data-mdb-button-init
           data-mdb-ripple-init
-          class="btn btn-primary btn-block mb-4"
+          className="btn btn-primary btn-block mb-4"
         >
           Sign in
         </button>
-        <div class="text-center">
+        <div className="text-center">
           <p>
             Not a member? <a href="#!">Register</a>
           </p>

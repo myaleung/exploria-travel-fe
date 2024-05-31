@@ -1,14 +1,14 @@
 const Logo = () => {
   return (
     <>
-      <svg class="logo me-5">
-        <a href="/">
-          <use xlink:href="/assets/symbols.svg#exploria-logo"></use>
+      <svg className="logo me-5">
+        <a xlinkHref="/">
+          <use xlinkHref="/assets/symbols.svg#exploria-logo"></use>
         </a>
       </svg>
-      <svg class="logo-m">
-        <a href="/">
-          <use xlink:href="/assets/symbols.svg#exploria-logo"></use>
+      <svg className="logo-m">
+        <a xlinkHref="/">
+          <use xlinkHref="/assets/symbols.svg#exploria-logo"></use>
         </a>
       </svg>
     </>
