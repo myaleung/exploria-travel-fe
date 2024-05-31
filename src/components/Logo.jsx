@@ -8,7 +8,7 @@ const Logo = () => {
       </svg>
       <svg className="logo-m">
         <a xlinkHref="/">
-          <use xlinkHref="/assets/symbols.svg#exploria-logo"></use>
+          <use xlinkHref="/assets/symbols.svg#exploria-logo-mobile"></use>
         </a>
       </svg>
     </>
