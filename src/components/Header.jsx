@@ -21,24 +21,32 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navigation">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a href="/" className="nav-link">
+                <a href="/" className="nav-link active" aria-current="true">
                   Home
                 </a>
               </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/saved-locations/"
                   role="button"
-                  data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  className="nav-link dd-toggle"
                 >
                   My Saved Locations
                 </a>
+                <a
+                  role="button"
+                  className="dropdown-toggle dropdown-toggle-split"
+                  data-toggle="dropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span className="sr-only">Toggle Dropdown</span>
+                </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Action
+                    <a className="dropdown-item" href="/saved-locations/dublin">
+                      Dublin
                     </a>
                   </li>
                   <li>
@@ -52,6 +60,39 @@ const Header = () => {
                     </a>
                   </li>
                 </ul>
+              </li>
+              {/* <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="/saved-locations/"
+                  role="button"
+                  // data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  My Saved Locations
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <a className="dropdown-item" href="/saved-locations/dublin">
+                      Dublin
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Another action
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Something else here
+                    </a>
+                  </li>
+                </ul>
+              </li> */}
+              <li className="nav-item">
+                <a href="/login" className="nav-link">
+                  Login
+                </a>
               </li>
             </ul>
             <SearchBar />
