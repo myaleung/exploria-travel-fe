@@ -1,4 +1,5 @@
 import Card from "./Card";
+import toCelcius from "../utils/toCelcius";
 
 const WeatherForecast = ({ weather, location }) => {
   let options = {
@@ -10,7 +11,7 @@ const WeatherForecast = ({ weather, location }) => {
 
   let cards = weather.slice(0, 5).map((item, index) => {
     let date = new Date(item.dt_txt).toLocaleDateString("en-UK", options);
-    let temp = item.main.temp;
+    let temp = toCelcius(item.main.temp);
     let icon = item.weather[0].icon;
     let desc = item.weather[0].description;
 
@@ -38,25 +39,6 @@ const WeatherForecast = ({ weather, location }) => {
           <a href="#">Add to My Favourites</a>
         </p>
       </div>
-      {/* <div className="row row-gap-4 pb-3 justify-content-center">
-        <div className="col-12 w-50 text-center">
-          <h5 className="font-bolder">Today's Weather:</h5>
-          <p>
-            {new Date(weather[0].dt_txt).toLocaleDateString("en-UK", options)}
-          </p>
-          <div className="d-flex gap-3 justify-content-center align-items-center">
-            <img
-              className="pb-2"
-              src={`/assets/weather-icons/${weather[0].weather[0].icon}.svg`}
-              alt="Sunny"
-            />
-            <div className="d-flex gap-md-3 flex-column flex-md-row">
-              <p className="mb-0">{weather[0].main.temp} &deg;C</p>
-              <p className="mb-0">{weather[0].weather[0].description}</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="row row-gap-4">{cards}</div>
     </>
   );

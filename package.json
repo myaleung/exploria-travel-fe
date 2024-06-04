@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest",
-    "coverage": "vitest --coverage"
+    "test": "vitest --mode testing",
+    "coverage": "vitest --coverage --mode testing"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",

@@ -1,6 +1,10 @@
+import LoginForm from "../components/LoginForm";
+
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
-export default Login
+    <section className="wrapper d-flex flex-column justify-content-center min-vh-atf">
+      <LoginForm />
+    </section>
+  );
+};
+export default Login;

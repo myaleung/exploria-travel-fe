@@ -2,6 +2,7 @@ import WeatherForecast from "../components/WeatherForecast";
 import dummyData from "../../data/dummyWeatherDataEdited.json";
 
 const Result = () => {
+  // console.log(process.env.WEATHER_API_KEY);
   const weather = dummyData.dublin.list;
   const location = dummyData.dublin.city.name;
 

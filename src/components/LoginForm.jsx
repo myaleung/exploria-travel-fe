@@ -1,20 +1,40 @@
 const LoginForm = () => {
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form>
+    <div className="container row align-self-center z-1">
+      <h1 className="text-white">Sign In</h1>
+      <form className="text-white">
         <div data-mdb-input-init className="form-outline mb-4">
-          <input type="email" id="loginName" className="form-control" />
           <label className="form-label" for="loginName">
-            Email or username
+            Username
           </label>
+          <input
+            type="text"
+            id="loginName"
+            className="form-control"
+            placeholder="Enter your username"
+          />
         </div>
-
         <div data-mdb-input-init className="form-outline mb-4">
-          <input type="password" id="loginPassword" className="form-control" />
+          <label className="form-label" for="emailAddress">
+            Email
+          </label>
+          <input
+            type="email"
+            id="emailAddress"
+            className="form-control"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div data-mdb-input-init className="form-outline mb-4">
           <label className="form-label" for="loginPassword">
             Password
           </label>
+          <input
+            type="password"
+            id="loginPassword"
+            className="form-control"
+            placeholder="Enter your password"
+          />
         </div>
         <button
           type="submit"
@@ -25,8 +45,8 @@ const LoginForm = () => {
           Sign in
         </button>
         <div className="text-center">
-          <p>
-            Not a member? <a href="#!">Register</a>
+          <p className="text-white">
+            Not a member? <a href="#">Register Here</a>
           </p>
         </div>
       </form>
