@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 
@@ -21,19 +23,24 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navigation">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a href="/" className="nav-link active" aria-current="true">
+                <NavLink
+                  to="/"
+                  className={`nav-link ${({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""}`}
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item dropdown">
-                <a
-                  href="/saved-locations/"
+                <NavLink
+                  to="/saved-locations/"
                   role="button"
                   aria-expanded="false"
-                  className="nav-link dd-toggle"
+                  className={`nav-link dd-toggle ${({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""}`}
                 >
                   My Saved Locations
-                </a>
+                </NavLink>
                 <a
                   role="button"
                   className="dropdown-toggle dropdown-toggle-split"
@@ -45,31 +52,51 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="/saved-locations/dublin">
+                    <NavLink
+                      className={`dropdown-item ${({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active" : ""}`}
+                      to="/results/:id"
+                    >
+                      Use Params
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={`dropdown-item ${({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active" : ""}`}
+                      to="/results/dublin"
+                    >
                       Dublin
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
+                    <NavLink
+                      className={`dropdown-item ${({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "active" : ""}`}
+                      to="#"
+                    >
                       Something else here
-                    </a>
+                    </NavLink>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <a href="/login" className="nav-link">
+                <NavLink
+                  to="/login"
+                  className={`nav-link ${({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""}`}
+                >
                   Login
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a href="/results" className="nav-link">
+                <NavLink
+                  to="/results/"
+                  className={`nav-link ${({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""}`}
+                >
                   Results
-                </a>
+                </NavLink>
               </li>
             </ul>
             <SearchBar />

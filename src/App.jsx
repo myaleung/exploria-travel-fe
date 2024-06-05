@@ -14,14 +14,11 @@ const App = () => {
     <>
       <Header />
       <Page>
-        {/* <Home /> */}
-        {/* <Result /> */}
-        {/* <SavedLocations /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/results" element={<Result />} />
           <Route path="/saved-locations/" element={<SavedLocations />} />
-          <Route path="/saved-locations/:id" element={<SavedLocations />} />
+          <Route path="/results/:id" element={<Result />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

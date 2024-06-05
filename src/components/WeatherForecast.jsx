@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Card from "./Card";
 import toCelcius from "../utils/toCelcius";
 
@@ -9,7 +11,11 @@ const WeatherForecast = ({ weather, location }) => {
     day: "numeric",
   };
 
-  let cards = weather.slice(0, 5).map((item, index) => {
+  let newWeatherAt12 = weather.filter((item) =>
+    item.dt_txt.includes("12:00:00")
+  );
+
+  let cards = newWeatherAt12.map((item, index) => {
     let date = new Date(item.dt_txt).toLocaleDateString("en-UK", options);
     let temp = toCelcius(item.main.temp);
     let icon = item.weather[0].icon;
@@ -27,6 +33,10 @@ const WeatherForecast = ({ weather, location }) => {
     );
   });
 
+  const [favourite, setFavourite] = useState(false);
+
+  console.log(favourite);
+
   return (
     <>
       <h2>{location}</h2>
@@ -36,7 +46,9 @@ const WeatherForecast = ({ weather, location }) => {
           <use xlinkHref="/assets/symbols.svg#favourite"></use>
         </svg>
         <p className="mb-0">
-          <a href="#">Add to My Favourites</a>
+          <a href="#" onClick={(e) => setFavourite((favourite) => !favourite)}>
+            Add to My Favourites
+          </a>
         </p>
       </div>
       <div className="row row-gap-4">{cards}</div>
