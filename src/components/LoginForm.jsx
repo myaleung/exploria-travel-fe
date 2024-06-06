@@ -4,7 +4,7 @@ const LoginForm = () => {
       <h1 className="text-white">Sign In</h1>
       <form className="text-white">
         <div data-mdb-input-init className="form-outline mb-4">
-          <label className="form-label" for="loginName">
+          <label className="form-label" htmlFor="loginName">
             Username
           </label>
           <input
@@ -15,7 +15,7 @@ const LoginForm = () => {
           />
         </div>
         <div data-mdb-input-init className="form-outline mb-4">
-          <label className="form-label" for="emailAddress">
+          <label className="form-label" htmlFor="emailAddress">
             Email
           </label>
           <input
@@ -26,7 +26,7 @@ const LoginForm = () => {
           />
         </div>
         <div data-mdb-input-init className="form-outline mb-4">
-          <label className="form-label" for="loginPassword">
+          <label className="form-label" htmlFor="loginPassword">
             Password
           </label>
           <input

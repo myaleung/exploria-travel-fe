@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Card from "./Card";
 import toCelcius from "../utils/toCelcius";
 
-const WeatherForecast = ({ weather, location }) => {
+const WeatherForecast = ({ weather, location, bookmarks, setBookmarks }) => {
   let options = {
     weekday: "long",
     year: "numeric",
@@ -35,20 +35,39 @@ const WeatherForecast = ({ weather, location }) => {
 
   const [favourite, setFavourite] = useState(false);
 
-  console.log(favourite);
+  useEffect(() => {
+    bookmarks.includes(location) && setFavourite(true);
+  }, []);
+
+  useEffect(() => {
+    if (favourite) {
+      setBookmarks([...bookmarks, location]);
+    } else {
+      setBookmarks(bookmarks.filter((bookmark) => bookmark !== location));
+    }
+  }, [favourite]);
 
   return (
     <>
       <h2>{location}</h2>
-      <div></div>
       <div className="d-flex justify-content-center py-3 position-relative">
-        <svg className="icon h-30 w-30 me-2">
-          <use xlinkHref="/assets/symbols.svg#favourite"></use>
-        </svg>
         <p className="mb-0">
-          <a href="#" onClick={(e) => setFavourite((favourite) => !favourite)}>
-            Add to My Favourites
-          </a>
+          <button
+            type="button"
+            className={`btn border-0 ${
+              favourite ? "text-primary" : "text-white"
+            }`}
+            onClick={() => setFavourite(!favourite)}
+          >
+            <svg
+              className={`icon h-30 w-30 me-2 ${
+                favourite ? "text-primary" : "text-white opacity-50"
+              }`}
+            >
+              <use xlinkHref="/assets/symbols.svg#favourite"></use>
+            </svg>
+            {favourite ? "Added" : "Add"} to My Favourites
+          </button>
         </p>
       </div>
       <div className="row row-gap-4">{cards}</div>

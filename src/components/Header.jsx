@@ -31,7 +31,7 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown text-nowrap">
                 <NavLink
                   to="/saved-locations/"
                   role="button"
@@ -43,7 +43,7 @@ const Header = () => {
                 </NavLink>
                 <a
                   role="button"
-                  className="dropdown-toggle dropdown-toggle-split"
+                  className="dropdown-toggle dropdown-toggle-split ps-lg-0"
                   data-toggle="dropdown"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -51,15 +51,6 @@ const Header = () => {
                   <span className="sr-only">Toggle Dropdown</span>
                 </a>
                 <ul className="dropdown-menu">
-                  <li>
-                    <NavLink
-                      className={`dropdown-item ${({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active" : ""}`}
-                      to="/results/:id"
-                    >
-                      Use Params
-                    </NavLink>
-                  </li>
                   <li>
                     <NavLink
                       className={`dropdown-item ${({ isActive, isPending }) =>
@@ -73,9 +64,9 @@ const Header = () => {
                     <NavLink
                       className={`dropdown-item ${({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "active" : ""}`}
-                      to="#"
+                      to="/results/leeds"
                     >
-                      Something else here
+                      Leeds
                     </NavLink>
                   </li>
                 </ul>
@@ -87,15 +78,6 @@ const Header = () => {
                     isPending ? "pending" : isActive ? "active" : ""}`}
                 >
                   Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  to="/results/"
-                  className={`nav-link ${({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active" : ""}`}
-                >
-                  Results
                 </NavLink>
               </li>
             </ul>

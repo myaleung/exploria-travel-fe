@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -10,15 +11,29 @@ import Result from "./pages/Result";
 import SavedLocations from "./pages/SavedLocations";
 
 const App = () => {
+  const [bookmarks, setBookmarks] = useState([]);
+
   return (
     <>
       <Header />
       <Page>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/results" element={<Result />} />
-          <Route path="/saved-locations/" element={<SavedLocations />} />
-          <Route path="/results/:id" element={<Result />} />
+          <Route
+            path="/saved-locations/"
+            element={
+              <SavedLocations
+                bookmarks={bookmarks}
+                setBookmarks={setBookmarks}
+              />
+            }
+          />
+          <Route
+            path="/results/:id"
+            element={
+              <Result bookmarks={bookmarks} setBookmarks={setBookmarks} />
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
