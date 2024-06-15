@@ -1,8 +1,12 @@
 const LoginForm = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="container row align-self-center z-1">
       <h1 className="text-white">Sign In</h1>
-      <form className="text-white">
+      <form className="text-white" onSubmit={handleSubmit}>
         <div data-mdb-input-init className="form-outline mb-4">
           <label className="form-label" htmlFor="loginName">
             Username
@@ -46,7 +50,7 @@ const LoginForm = () => {
         </button>
         <div className="text-center">
           <p className="text-white">
-            Not a member? <a href="#">Register Here</a>
+            Not a member? <a href="/sign-up">Register Here</a>
           </p>
         </div>
       </form>

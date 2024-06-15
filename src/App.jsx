@@ -20,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
-            path="/saved-locations/"
+            path="/saved-locations"
             element={
               <SavedLocations
                 bookmarks={bookmarks}
@@ -29,7 +29,7 @@ const App = () => {
             }
           />
           <Route
-            path="/results/:id"
+            path="/results"
             element={
               <Result bookmarks={bookmarks} setBookmarks={setBookmarks} />
             }

@@ -1,17 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-// import { submitWeatherSearch } from "../utils/weather.service";
+import { submitWeatherSearch } from "../utils/weather.service";
 
 const SearchBox = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  const submitSearchForm = (e) => {
+  const submitSearchForm = async (e) => {
     e.preventDefault();
-    // submitWeatherSearch(searchQuery);
-    //TODO: if searchQuery is in database then navigate, else throw error message
-    navigate(`/results/${searchQuery.toLowerCase().trim()}`);
+    //!if searchQuery is in database then navigate, else throw error message
+    const weatherResult = await submitWeatherSearch(
+      `${searchQuery.toLowerCase().trim()}`
+    );
+
+    if (weatherResult.cod)
+      navigate(
+        `/results?query=${searchQuery
+          .toLowerCase()
+          .trim()
+          .replaceAll(" ", "+")}`,
+        {
+          state: { data: weatherResult },
+        }
+      );
   };
 
   return (
