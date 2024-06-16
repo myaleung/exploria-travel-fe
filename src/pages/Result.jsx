@@ -10,21 +10,21 @@ const Result = ({ bookmarks, setBookmarks }) => {
   const [data, setData] = useState(null);
   const { state } = useLocation();
   const result = state;
-  if (result !== null) {
-    setData(result.data);
-  }
 
   useEffect(() => {
     const weatherData = async () => {
-      if (data === null) {
-        let query = searchParams.get("query");
-        query = query.replaceAll("+", " ");
-        const weatherResultData = await submitWeatherSearch(query);
-        setData(weatherResultData);
-      }
+      let query = searchParams.get("query");
+      query = query.replaceAll("+", " ");
+      const weatherResultData = await submitWeatherSearch(query);
+      setData(weatherResultData);
     };
+    if (result !== null) {
+      setData(result.data);
+    }
 
-    weatherData();
+    if (data === null) {
+      weatherData();
+    }
   }, [data]);
 
   //TODO: LOADING STATE: loading state to false till all the values have loaded

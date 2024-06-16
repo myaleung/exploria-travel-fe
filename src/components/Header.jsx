@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import Logo from "./Logo";
-import SearchBar from "./SearchBar";
+import SearchBox from "./SearchBox";
 
 const Header = () => {
+  const location = useLocation();
+
   return (
     <header className="header">
       <nav className="navbar navbar-expand-lg">
@@ -81,7 +83,7 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <SearchBar />
+            {location.pathname !== "/" && <SearchBox header={true} />}
           </div>
         </div>
       </nav>
