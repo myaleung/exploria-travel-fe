@@ -3,7 +3,7 @@ import { useLocation, useSearchParams } from "react-router-dom";
 // import dummyData from "../../data/dummyWeatherDataEdited.json";
 import WeatherForecast from "../components/WeatherForecast";
 import PageTitle from "../components/PageTitle";
-import { submitWeatherSearch } from "../utils/weather.service";
+import { submitWeatherSearch } from "../services/weather.service";
 
 const Result = ({ bookmarks, setBookmarks }) => {
   const [searchParams, setSearchParams] = useSearchParams();

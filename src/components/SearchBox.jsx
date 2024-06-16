@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import { submitWeatherSearch } from "../utils/weather.service";
+import { submitWeatherSearch } from "../services/weather.service";
 
 const SearchBox = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
