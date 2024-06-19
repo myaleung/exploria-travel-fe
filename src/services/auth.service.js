@@ -6,7 +6,7 @@ export const submitAuthForm = async (userDetails, action) => {
     // Make a post request with the user details and path
     const response = await axios.post(`${backendUrl}${action}`, userDetails);
     // return the data response from the server
-    return response.data;
+    return response;
   } catch (e) {
     return e.message;
   }

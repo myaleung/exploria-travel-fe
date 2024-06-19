@@ -46,7 +46,9 @@ const Bookmarks = ({ bookmarks, setBookmarks }) => {
                     <use xlinkHref="/assets/symbols.svg#favourite"></use>
                   </svg>
                 </button>
-                <Link to={`/results/${bookmark}`}>{capitalisedBookmark}</Link>
+                <Link to={`/results/query=${bookmark}`}>
+                  {capitalisedBookmark}
+                </Link>
               </li>
             );
           })}

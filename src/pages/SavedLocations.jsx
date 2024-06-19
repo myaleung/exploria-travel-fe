@@ -1,7 +1,20 @@
+import { useEffect } from "react";
+
 import Bookmarks from "../components/Bookmarks";
 import PageTitle from "../components/PageTitle";
+import { getSavedLocations } from "../services/savedLocations.service.js";
 
 const SavedLocations = (props) => {
+  useEffect(() => {
+    const cookie = document.cookie.split("=")[1];
+    const token = { token: cookie };
+    console.log(token);
+    const userBookmarks = async () => {
+      await getSavedLocations(token);
+    };
+    // console.log(userBookmarks());
+  }, []);
+
   return (
     <>
       <PageTitle title="Favourite Locations" />

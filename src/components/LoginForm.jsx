@@ -19,11 +19,17 @@ const LoginForm = (props) => {
       body = { fullName: fullName, email: emailAddress, password: password };
     }
     const result = await submitAuthForm(body, props.path);
+    let expirationDate;
 
     switch (result.status) {
       case 200:
         //Logged In. Set token in cookies
-        document.cookie = `token=${result.token}`;
+        // Calculate the date for cookie expiration (current date + 7 days)
+        expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 7);
+        document.cookie = `token=${
+          result.data.token
+        };expires=${expirationDate.toUTCString()};path=/;SameSite=Strict`;
         setErrors("");
         //redirect to home page
         navigate(`/`);

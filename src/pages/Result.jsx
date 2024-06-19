@@ -37,7 +37,7 @@ const Result = ({ bookmarks, setBookmarks }) => {
           <h1>Telling you about...</h1>
           {data !== null && (
             <WeatherForecast
-              location={data.city.name}
+              location={data.city}
               weather={data.list}
               bookmarks={bookmarks}
               setBookmarks={setBookmarks}

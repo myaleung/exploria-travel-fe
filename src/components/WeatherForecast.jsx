@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Card from "./Card";
 import toCelcius from "../utils/toCelcius";
+import { addToSavedLocations } from "../services/savedLocations.service.js";
 
 const WeatherForecast = ({ weather, location, bookmarks, setBookmarks }) => {
   let options = {
@@ -35,6 +36,22 @@ const WeatherForecast = ({ weather, location, bookmarks, setBookmarks }) => {
 
   const [favourite, setFavourite] = useState(false);
 
+  const handleFavourite = () => {
+    setFavourite(!favourite);
+    //add location to user bookmarks
+    const saveLocation = async () => {
+      const cookie = document.cookie;
+      const addToUserBookmarks = await addToSavedLocations(
+        cookie,
+        location.name,
+        location.coord.lat,
+        location.coord.lon
+      );
+      return addToUserBookmarks;
+    };
+    // console.log(saveLocation());
+  };
+
   useEffect(() => {
     bookmarks.includes(location) && setFavourite(true);
   }, []);
@@ -49,7 +66,7 @@ const WeatherForecast = ({ weather, location, bookmarks, setBookmarks }) => {
 
   return (
     <>
-      <h2>{location}</h2>
+      <h2>{location.name}</h2>
       <div className="d-flex justify-content-center py-3 position-relative">
         <p className="mb-0">
           <button
@@ -57,7 +74,7 @@ const WeatherForecast = ({ weather, location, bookmarks, setBookmarks }) => {
             className={`btn border-0 ${
               favourite ? "text-primary" : "text-white"
             }`}
-            onClick={() => setFavourite(!favourite)}
+            onClick={handleFavourite}
           >
             <svg
               className={`icon h-30 w-30 me-2 ${
