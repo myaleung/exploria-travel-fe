@@ -1,18 +1,18 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Bookmarks = ({ bookmarks, setBookmarks }) => {
-  // const location = ["leeds", "bristol"];
-  // const addLocation = () => {
-  //   setBookmarks([...bookmarks, ...location]);
-  // };
-  const removeFavourite = (e) => {
-    // setBookmarks(bookmarks.filter((bookmark) => bookmark !== location));
-  };
+import {
+	updateSavedLocation,
+	updateLocalStorage,
+} from "../utils/savedLocations.js";
 
-  // useEffect(() => {
-  //   addLocation();
-  // }, []);
+const Bookmarks = ({ bookmarks, setBookmarks }) => {
+  let user = JSON.parse(localStorage.getItem("user"));
+
+  const removeFavourite = (city, longitude, latitude) => {
+    updateSavedLocation(city, latitude, longitude);
+    updateLocalStorage(user, city, latitude, longitude);
+    setBookmarks(user.savedLocations);
+  };
 
   return (
     <>
@@ -34,19 +34,19 @@ const Bookmarks = ({ bookmarks, setBookmarks }) => {
         <ul className="row list-unstyled">
           {bookmarks.sort().map((bookmark, i) => {
             const capitalisedBookmark =
-              bookmark.charAt(0).toUpperCase() + bookmark.slice(1);
+              bookmark.city.charAt(0).toUpperCase() + bookmark.city.slice(1);
 
             return (
               <li key={i} className="col-sm-6 col-md-4 pb-3 text-start">
                 <button
                   className="btn border-0 text-primary"
-                  onClick={removeFavourite(bookmark)}
+                  onClick={() => removeFavourite(bookmark.city, bookmark.longitude, bookmark.latitude)}
                 >
                   <svg className="icon h-30 w-30 me-2">
                     <use xlinkHref="/assets/symbols.svg#favourite"></use>
                   </svg>
                 </button>
-                <Link to={`/results/query=${bookmark}`}>
+                <Link to={`/results/?lon=${bookmark.longitude}&lat=${bookmark.latitude}`}>
                   {capitalisedBookmark}
                 </Link>
               </li>

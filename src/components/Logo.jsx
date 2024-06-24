@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
+
 const Logo = () => {
   return (
     <>
-      <svg className="logo me-5">
-        <a xlinkHref="/">
+      <Link to="/">
+        <svg className="logo me-5">
           <use xlinkHref="/assets/symbols.svg#exploria-logo"></use>
-        </a>
-      </svg>
-      <svg className="logo-m">
-        <a xlinkHref="/">
+        </svg>
+      </Link>
+      <Link to="/">
+        <svg className="logo-m">
           <use xlinkHref="/assets/symbols.svg#exploria-logo-mobile"></use>
-        </a>
-      </svg>
+        </svg>
+      </Link>
     </>
   );
 };

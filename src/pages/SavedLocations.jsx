@@ -1,19 +1,20 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Bookmarks from "../components/Bookmarks";
 import PageTitle from "../components/PageTitle";
-import { getSavedLocations } from "../services/savedLocations.service.js";
 
-const SavedLocations = (props) => {
+const SavedLocations = ({ bookmarks, setBookmarks }) => {
+  const navigate = useNavigate();
+  const userString = localStorage.getItem("user");
+  if (!userString) {
+		navigate("/login");
+	}
+  const user = JSON.parse(userString);
+
   useEffect(() => {
-    const cookie = document.cookie.split("=")[1];
-    const token = { token: cookie };
-    console.log(token);
-    const userBookmarks = async () => {
-      await getSavedLocations(token);
-    };
-    // console.log(userBookmarks());
-  }, []);
+		setBookmarks(user.savedLocations);
+	}, []);
 
   return (
     <>
@@ -22,8 +23,8 @@ const SavedLocations = (props) => {
         <div className="container py-10 text-white text-center position-relative z-1">
           <h1>Telling you about...</h1>
           <Bookmarks
-            bookmarks={props.bookmarks}
-            setBookmarks={props.setBookmarks}
+            bookmarks={bookmarks}
+            setBookmarks={setBookmarks}
           />
         </div>
       </section>
