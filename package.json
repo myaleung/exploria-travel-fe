@@ -11,7 +11,7 @@
     "test": "vitest --mode testing",
     "coverage": "vitest --coverage --mode testing"
   },
-  "jest":{
+  "jest": {
     "testEnvironment": "jsdom"
   },
   "dependencies": {
@@ -23,7 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
-    "svgxuse": "^1.2.6"
+    "svgxuse": "^1.2.6",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",

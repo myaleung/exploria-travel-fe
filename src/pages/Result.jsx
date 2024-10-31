@@ -1,36 +1,53 @@
 import { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
-// import dummyData from "../../data/dummyWeatherDataEdited.json";
-import WeatherForecast from "../components/WeatherForecast";
-import PageTitle from "../components/PageTitle";
+import { submitHotelSearch } from "../services/hotel.service";
 import { submitWeatherSearch } from "../services/weather.service";
+import PageTitle from "../components/PageTitle";
+import HotelListings from "../components/HotelListings";
+import WeatherForecast from "../components/WeatherForecast";
 
 const Result = ({ setBookmarks }) => {
 	const [searchParams, setSearchParams] = useSearchParams();
-  const [data, setData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
+	const [data, setData] = useState(null);
+	const [hotelData, setHotelData] = useState(null);
+	// const [isLoading, setIsLoading] = useState(false);
 	const { state } = useLocation();
 	const result = state;
+	let lon = searchParams.get("lon");
+	let lat = searchParams.get("lat");
+
+	const fetchWeatherData = async () => {
+		// setIsLoading(true); // Start loading
+		try {
+			const weatherResultData = result?.data
+				? result.data
+				: await submitWeatherSearch({ lat, lon });
+			setData(weatherResultData);
+		} catch (error) {
+			console.error("Failed to fetch weather data:", error);
+			return error.message;
+		} finally {
+			// setIsLoading(false); // End loading
+		}
+	};
+
+	const fetchHotelData = async () => {
+		// setIsLoading(true); // Start loading
+		try {
+			const hotelResultData = await submitHotelSearch({ lat, lon });
+			const hotelData10 = hotelResultData?.slice(0, 10);
+			setHotelData(hotelData10);
+		} catch (error) {
+			console.error("Failed to fetch hotel data:", error);
+			return error.message;
+		} finally {
+			// setIsLoading(false); // End loading
+		}
+	};
 
 	useEffect(() => {
-		const fetchWeatherData = async () => {
-			// setIsLoading(true); // Start loading
-			let lon = searchParams.get("lon");
-			let lat = searchParams.get("lat");
-
-			try {
-				const weatherResultData = result?.data
-					? result.data
-					: await submitWeatherSearch({ lat, lon });
-        setData(weatherResultData);
-			} catch (error) {
-        console.error("Failed to fetch weather data:", error);
-        return error.message
-			} finally {
-				// setIsLoading(false); // End loading
-			}
-		};
 		fetchWeatherData();
+		fetchHotelData();
 	}, [searchParams, result]);
 
 	//TODO: LOADING STATE: loading state to false till all the values have loaded
@@ -48,6 +65,7 @@ const Result = ({ setBookmarks }) => {
 							setBookmarks={setBookmarks}
 						/>
 					)}
+					<HotelListings listings={hotelData} />
 				</div>
 			</section>
 		</>

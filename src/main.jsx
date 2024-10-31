@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.jsx";
 
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "popper.js/dist/popper.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "popper.js/dist/popper.js";
 import "./assets/styles/index.scss";
 import "svgxuse/svgxuse.js";
 
