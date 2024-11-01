@@ -15,6 +15,7 @@
     "testEnvironment": "jsdom"
   },
   "dependencies": {
+    "@tomtom-international/web-sdk-maps": "^6.25.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "js-cookie": "^3.0.5",

@@ -4,6 +4,7 @@ import { submitHotelSearch } from "../services/hotel.service";
 import { submitWeatherSearch } from "../services/weather.service";
 import PageTitle from "../components/PageTitle";
 import HotelListings from "../components/HotelListings";
+import Map from "../components/Map";
 import WeatherForecast from "../components/WeatherForecast";
 
 const Result = ({ setBookmarks }) => {
@@ -65,7 +66,14 @@ const Result = ({ setBookmarks }) => {
 							setBookmarks={setBookmarks}
 						/>
 					)}
-					<HotelListings listings={hotelData} />
+					<div className="row row-gap-4">
+						<div className="col-12 col-md-6">
+							<HotelListings listings={hotelData} />
+						</div>
+						<div className="col-12 col-md-6">
+							<Map long={lon} lat={lat} />
+						</div>
+					</div>
 				</div>
 			</section>
 		</>
